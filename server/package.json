@@ -1,0 +1,29 @@
+{
+  "name": "react-shop-server",
+  "description": "It is the server-side code for React Shop project.",
+  "version": "1.0.0",
+  "private": true,
+  "main": "dist/server.js",
+  "scripts": {
+    "start": "tsc && node dist/server.js",
+    "dev": "nodemon --watch src --ext \"ts\" --exec \"tsx src/server.ts\"",
+    "build": "tsc"
+  },
+  "keywords": [
+    "react-shop-server"
+  ],
+  "author": "Zoltán Völcsey",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.10.2",
+    "nodemon": "^3.1.9",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}

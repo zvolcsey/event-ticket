@@ -1,0 +1,30 @@
+{
+  "name": "react-shop",
+  "version": "1.0.0",
+  "description": "It is a React + Node.js + Express full stack e-commerce portfolio project.",
+  "private": true,
+  "keywords": [
+    "e-commerce",
+    "portfolio-project"
+  ],
+  "homepage": "https://github.com/zvolcsey/react-shop#readme",
+  "bugs": {
+    "url": "https://github.com/zvolcsey/react-shop/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/zvolcsey/react-shop.git"
+  },
+  "license": "MIT",
+  "author": "Zoltán Völcsey",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:client\" \"npm run dev:server\"",
+    "dev:client": "cd client && npm run dev",
+    "dev:server": "cd server && npm run dev"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "typescript": "^5.7.2"
+  }
+}
