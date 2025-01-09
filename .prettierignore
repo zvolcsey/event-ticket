@@ -1,0 +1,22 @@
+# Node modules
+node_modules/
+
+# Build files
+dist/
+build/
+
+# Generated files
+coverage/
+
+# Environment variables
+.env
+.env.*
+
+# Lock files
+package-lock.json
+
+# Static assets
+public/
+
+# Logs
+*.log

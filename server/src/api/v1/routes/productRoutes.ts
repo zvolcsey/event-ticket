@@ -1,10 +1,10 @@
-import express from 'express';
-import { getProductsHandler } from '../controllers/productController';
+import express from 'express'
+import { getProductsHandler } from '../controllers/productController'
 
-const productRoutes = express.Router({strict: true});
+const productRoutes = express.Router()
 
 // desc     List products
 // route    GET /api/v1/products/
-productRoutes.get('/', getProductsHandler);
+productRoutes.get('/', getProductsHandler)
 
-export default productRoutes;
+export default productRoutes

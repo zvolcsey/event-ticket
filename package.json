@@ -19,12 +19,25 @@
   "author": "Zoltán Völcsey",
   "type": "module",
   "scripts": {
-    "dev": "concurrently \"npm run dev:client\" \"npm run dev:server\"",
     "dev:client": "cd client && npm run dev",
-    "dev:server": "cd server && npm run dev"
+    "dev:server": "cd server && npm run dev",
+    "dev": "concurrently npm:dev:*",
+    "lint": "cd client && npm run lint && cd ../server && npm run lint",
+    "prettier:check": "prettier . --check --ignore-unknown",
+    "prettier:write": "prettier . --write --ignore-unknown",
+    "prepare": "husky install",
+    "lint-staged": "lint-staged"
   },
   "devDependencies": {
+    "@types/lint-staged": "^13.3.0",
     "concurrently": "^9.1.2",
-    "typescript": "^5.7.2"
+    "husky": "^9.1.7",
+    "lint-staged": "^15.3.0",
+    "prettier": "3.4.2"
+  },
+  "lint-staged": {
+    "*": [
+      "prettier . --write --ignore-unknown"
+    ]
   }
 }
