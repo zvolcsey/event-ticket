@@ -17,29 +17,29 @@ TODO
 
 ## Run locally
 
-You need have Node.js 22 or higher installed.
+You need have Node.js 20 or higher installed.
+
+This project uses Docker compose for development.
 
 ```bash
+  # Clone the repository
   git clone git@github.com:zvolcsey/react-shop.git
-
   cd react-shop
 
-  npm ci
+  # Run `docker compose up` in detached mode
+  docker compose -f docker-compose.dev.yml up --build -d
 
-  cd client
-
-  npm ci
-
-  cd ..
-
-  cd server
-
-  npm ci
-
-  cd ..
-
-  npm run dev # Running the client and the server
+  # Stop and remove the containers
+  docker compose -f docker-compose.dev.yml down
+  # Remove all data
+  docker compose -f docker-compose.dev.yml down -v
 ```
+
+This is going to build and start all necessary containers:
+
+- Client (**react-shop-client**)
+- Server (**react-shop-server**)
+- PostgreSQL database (**react-shop-postgres**)
 
 ## License
 

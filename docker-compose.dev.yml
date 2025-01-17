@@ -1,0 +1,85 @@
+services:
+  postgres:
+    image: postgres:17
+    container_name: react-shop-postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      POSTGRES_DB: ${POSTGRES_DB:-react-shop-postgres}
+      NODE_ENV: development
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: pg_isready -U ${POSTGRES_USER:-postgres} -h localhost -d ${POSTGRES_DB:-react-shop-postgres}
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    restart: always
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+    user: postgres
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      - default
+
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile.dev
+    container_name: react-shop-server
+    volumes:
+      - ./server:/app
+      - /server/node_modules
+    ports:
+      - '8080:8080'
+    environment:
+      DATABASE_URL: postgres://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@postgres:5432/${POSTGRES_DB:-react-shop-postgres}
+      NODE_ENV: development
+    depends_on:
+      postgres:
+        condition: service_healthy
+    deploy:
+      resources:
+        limits:
+          memory: 500M
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      - default
+
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile.dev
+    container_name: react-shop-client
+    volumes:
+      - ./client:/app
+      - /app/node_modules
+    ports:
+      - '5173:5173'
+    environment:
+      VITE_API_URL: http://server:8080
+      NODE_ENV: development
+    depends_on:
+      - server
+    deploy:
+      resources:
+        limits:
+          memory: 500M
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      - default
+
+volumes:
+  postgres-data:
+    driver: local
+
+networks:
+  default:
+    driver: bridge

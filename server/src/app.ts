@@ -1,4 +1,5 @@
 import express, { Request, Response, Express } from 'express'
+import 'dotenv/config'
 
 import welcomeRoute from './api/v1/routes/welcomeRoute'
 import productRoutes from './api/v1/routes/productRoutes'

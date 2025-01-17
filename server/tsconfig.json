@@ -5,11 +5,13 @@
     "rootDir": "../",
     "outDir": "./dist",
     "paths": {
-      "@shared/*": ["../shared/*"]
+      "@shared/*": ["../shared/*"],
+      "@db/*": ["./src/db/*"]
     },
     "forceConsistentCasingInFileNames": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
+    "moduleResolution": "bundler",
 
     /* Linting */
     "strict": true,
