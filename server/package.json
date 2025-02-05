@@ -11,7 +11,13 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "prettier:check": "prettier --config ../.prettierrc --ignore-path ../.prettierignore --ignore-unknown . --check",
-    "prettier:write": "prettier --config ../.prettierrc --ignore-path ../.prettierignore --ignore-unknown . --write"
+    "prettier:write": "prettier --config ../.prettierrc --ignore-path ../.prettierignore --ignore-unknown . --write",
+    "migrate": "node-pg-migrate"
+  },
+  "pg-migrate": {
+    "migrations-path": "migrations",
+    "migration-table": "pgmigrations",
+    "es6": true
   },
   "keywords": [
     "react-shop-server"
@@ -33,6 +39,7 @@
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
     "globals": "^15.14.0",
+    "node-pg-migrate": "^7.9.0",
     "nodemon": "^3.1.9",
     "prettier": "3.4.2",
     "tsx": "^4.19.2",

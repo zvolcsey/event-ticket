@@ -35,11 +35,32 @@ This project uses Docker compose for development.
   docker compose -f docker-compose.dev.yml down -v
 ```
 
-This is going to build and start all necessary containers:
+This is going to do the next things
 
-- Client (**react-shop-client**)
-- Server (**react-shop-server**)
-- PostgreSQL database (**react-shop-postgres**)
+1.  Build and start all necessary containers:
+
+- Client (**event-ticket-client**)
+- Server (**event-ticket-server**)
+- PostgreSQL database (**event-ticket-postgres**)
+
+2. Create the following tables and custom types from the migrations files.
+
+- Tables
+  - admin_users
+  - bands
+  - bands_events
+  - customers
+  - event_categories
+  - events
+  - ordered_items
+  - orders
+  - pgmigrations
+  - tickets
+  - tickets_hold
+  - venue_addresses
+  - venues
+
+The migrations files are available in the [migrations](./server/migrations/) folder.
 
 ## License
 

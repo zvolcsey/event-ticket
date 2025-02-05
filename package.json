@@ -1,5 +1,5 @@
 {
-  "name": "react-shop",
+  "name": "event-ticket",
   "version": "1.0.0",
   "description": "It is a React + Node.js + Express full stack e-commerce portfolio project.",
   "private": true,
@@ -7,13 +7,13 @@
     "e-commerce",
     "portfolio-project"
   ],
-  "homepage": "https://github.com/zvolcsey/react-shop#readme",
+  "homepage": "https://github.com/zvolcsey/event-ticket#readme",
   "bugs": {
-    "url": "https://github.com/zvolcsey/react-shop/issues"
+    "url": "https://github.com/zvolcsey/event-ticket/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/zvolcsey/react-shop.git"
+    "url": "git+ssh://git@github.com/zvolcsey/event-ticket.git"
   },
   "license": "MIT",
   "author": "Zoltán Völcsey",
