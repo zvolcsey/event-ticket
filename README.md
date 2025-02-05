@@ -1,4 +1,4 @@
-# React Shop
+# Event Ticket
 
 ## Overview
 
@@ -23,8 +23,8 @@ This project uses Docker compose for development.
 
 ```bash
   # Clone the repository
-  git clone git@github.com:zvolcsey/react-shop.git
-  cd react-shop
+  git clone git@github.com:zvolcsey/event-ticket.git
+  cd event-ticket
 
   # Run `docker compose up` in detached mode
   docker compose -f docker-compose.dev.yml up --build -d
