@@ -24,13 +24,18 @@ export const up = (pgm) => {
     name: { type: 'varchar(255)', notNull: true },
     slug: { type: 'varchar(255)', notNull: true },
     status: { type: 'status', notNull: true, default: 'active' },
-    date: {
+    event_start: {
       type: 'timestamptz',
       notNull: true,
     },
+    event_end: {
+      type: 'timestamptz',
+      notNull: true,
+    },
+    timezone: { type: 'varchar(255)', notNull: true },
     seating_type: { type: 'seating_type', notNull: true, default: 'standing' },
     description: { type: 'text' },
-    image: { type: 'varchar(255)' },
+    image_url: { type: 'varchar(255)' },
     created_at: {
       type: 'timestamptz',
       default: new PgLiteral('CURRENT_TIMESTAMP'),
