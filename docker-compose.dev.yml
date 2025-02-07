@@ -35,7 +35,7 @@ services:
     command: >
       sh -c 'npx tsx node_modules/.bin/node-pg-migrate up &&
             npx tsx src/db/check-tables.ts &&
-            npx tsx src/db/events-seed.ts &&
+            npx tsx src/db/seeds/events-seed.ts &&
             npm run dev'
     volumes:
       - ./server:/app
