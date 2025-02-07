@@ -35,7 +35,7 @@ This project uses Docker compose for development.
   docker compose -f docker-compose.dev.yml down -v
 ```
 
-This is going to do the next things
+This is going to do the next things.
 
 1.  Build and start all necessary containers:
 
@@ -61,6 +61,21 @@ This is going to do the next things
   - venues
 
 The migrations files are available in the [migrations](./server/migrations/) folder.
+
+3. Add seed data to the database
+
+The following data are going to added:
+  - categories
+  - venues
+  - events
+  - bands
+  - Connect the bands to the events in the bands_events table.
+
+Order in the [events_seed.ts](./server/src/db/seeds/events-seed.ts) file: categories -> venues -> events -> bands -> bands_events
+
+The seeded data is going to be logged when running docker-compose.
+
+The seed files are available in the [seeds](./server/src/db/seeds/) folder.
 
 ## License
 
