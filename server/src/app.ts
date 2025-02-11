@@ -1,12 +1,47 @@
 import express, { Request, Response, Express } from 'express'
 import 'dotenv/config'
+import session from 'express-session'
+import helmet from 'helmet'
+import connectPgSimple from 'connect-pg-simple'
+import pool from './db/index'
 
 import welcomeRoute from './api/v1/routes/welcomeRoute'
 import productRoutes from './api/v1/routes/productRoutes'
 
+// Create an Express application
 const app: Express = express()
 
-// Middleware
+// Security middleware
+app.use(helmet())
+app.set('trust proxy', 1)
+
+// Rate limit middleware
+// TODO
+
+// Session middleware
+const pgSession = connectPgSimple(session)
+app.use(
+  session({
+    store: new pgSession({
+      pool: pool,
+      tableName: 'sessions',
+      createTableIfMissing: true,
+      pruneSessionInterval: 60 * 15, // Cleanup every 15 minutes
+    }),
+    secret: String(process.env.SESSION_SECRET),
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      secure: process.env.NODE_ENV === 'production',
+      maxAge: 24 * 60 * 60 * 1000, // 24 hours
+      sameSite: 'strict',
+      httpOnly: true,
+    },
+    rolling: true,
+  })
+)
+
+// Handle requests with json
 app.use(express.json())
 
 // Routes

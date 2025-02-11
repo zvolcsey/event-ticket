@@ -9,7 +9,8 @@
 1. [Routing](#routing)
 2. [Run locally](#run-locally)
 3. [Ports](#ports)
-4. [License](#license)
+4. [Authentication and Cookies](#authentication-and-cookies)
+5. [License](#license)
 
 ## Routing
 
@@ -65,17 +66,28 @@ The migrations files are available in the [migrations](./server/migrations/) fol
 3. Add seed data to the database
 
 The following data are going to added:
-  - categories
-  - venues
-  - events
-  - bands
-  - Connect the bands to the events in the bands_events table.
+
+- categories
+- venues
+- events
+- bands
+- Connect the bands to the events in the bands_events table.
 
 Order in the [events_seed.ts](./server/src/db/seeds/events-seed.ts) file: categories -> venues -> events -> bands -> bands_events
 
 The seeded data is going to be logged when running docker-compose.
 
 The seed files are available in the [seeds](./server/src/db/seeds/) folder.
+
+## Authentication and Cookies
+
+This portfolio app uses session-based authentication with cookies.
+
+- Session cookies are used to maintain user authentication state.
+- Browser cookies only store a session ID and expire after 24 hours.
+- Session data (user ID, authentication state) is stored securely on the server.
+- Sessions expire after 24 hours of inactivity.
+- All data is temporarily and for demonstration purposes only.
 
 ## License
 
