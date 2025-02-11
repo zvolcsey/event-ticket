@@ -13,6 +13,8 @@ dist/
 
 # Environment variables
 .env
+.env.server
+.env.postgresql
 
 # Editor and system files
 .DS_Store

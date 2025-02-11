@@ -2,17 +2,15 @@ services:
   postgres:
     image: postgres:17
     container_name: event-ticket-postgres
-    environment:
-      POSTGRES_USER: ${POSTGRES_USER:-postgres}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
-      POSTGRES_DB: ${POSTGRES_DB:-react-shop-postgres}
-      NODE_ENV: development
+    env_file:
+      - path: ./server/env/.env.postgresql
+        required: true
     ports:
       - '5432:5432'
     volumes:
       - postgres-data:/var/lib/postgresql/data
     healthcheck:
-      test: pg_isready -U ${POSTGRES_USER:-postgres} -h localhost -d ${POSTGRES_DB:-react-shop-postgres}
+      test: pg_isready -U ${POSTGRES_USER:-postgres} -h localhost -d ${POSTGRES_DB:-event-ticket-db}
       interval: 5s
       timeout: 5s
       retries: 10
@@ -42,9 +40,9 @@ services:
       - /server/node_modules
     ports:
       - '8080:8080'
-    environment:
-      DATABASE_URL: postgres://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@postgres:5432/${POSTGRES_DB:-react-shop-postgres}
-      NODE_ENV: development
+    env_file:
+      - path: ./server/env/.env.server
+        required: true
     depends_on:
       postgres:
         condition: service_healthy
